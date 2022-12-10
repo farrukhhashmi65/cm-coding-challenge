@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable */
+import React from 'react'
+import { ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import customTheme from './theme/customTheme';
+import { useTranslation } from "react-i18next";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./config/i18n";
 
 function App() {
+  const { t } = useTranslation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={customTheme}>
+      <I18nextProvider i18n={i18n}>
+        <h2>{t('appTitle')}</h2>
+        <Button variant="contained" color="primary">Primary</Button>
+        <Button color="secondary" variant="contained">Secondary</Button>
+      </I18nextProvider>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
+
