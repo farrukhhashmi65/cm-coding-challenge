@@ -1,3 +1,8 @@
 {
-    "appTitle": "crewmeister"
+    "appTitle": "Coding Challenge",
+    "downloadICal": "Download ICal",
+    "totalAbsences": "Total Absences",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "absenceType": "Absence Type"
 }
