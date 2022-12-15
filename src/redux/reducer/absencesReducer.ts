@@ -1,20 +1,18 @@
+import { combineReducers } from 'redux'
+import getBasicReducer from '../basicReducer'
 import * as Actions from '../actions/absencesActions'
 
-export const initialState: any = {
-  error: null,
-  loading: true
-}
-
-export const absencesReducer = (state: any = initialState, action: any): any => {
-  switch (action.type) {
-    case Actions.getAbsencesSuccess:
-      return {
-        ...state,
-        loading: false
-      }
-    default:
-      return state
-  }
-}
+export const absencesReducer = combineReducers({
+  absences: getBasicReducer({
+    request: Actions.GET_ABSENCES_REQUEST,
+    success: Actions.GET_ABSENCES_SUCCESS,
+    failure: Actions.GET_ABSENCES_FAILURE
+  }),
+  absencesData: getBasicReducer({
+    request: Actions.GET_ABSENCES_DATA_REQUEST,
+    success: Actions.GET_ABSENCES_DATA_SUCCESS,
+    failure: Actions.GET_ABSENCES_DATA_FAILURE
+  })
+})
 
 export default absencesReducer

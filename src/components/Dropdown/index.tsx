@@ -9,12 +9,14 @@ interface DropdownProps {
   label: string
   value: string
   onSelect: Function
+  dropdownList?: any[]
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   label,
   value,
-  onSelect
+  onSelect,
+  dropdownList = []
 }): JSX.Element => {
   const handleChange = (event: SelectChangeEvent): void => {
     onSelect(event.target.value)
@@ -23,16 +25,20 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
         <Box sx={{ flexGrow: 1 }}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+                <InputLabel id="simple-select-label">{label}</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
+                    labelId="simple-select-label"
+                    id="simple-select"
                     value={value}
                     label={label}
                     onChange={handleChange}
                 >
-                    <MenuItem value={10}>Vacations</MenuItem>
-                    <MenuItem value={20}>Sickness</MenuItem>
+                    {dropdownList?.map((d: string, index: number) => (
+
+                      <MenuItem value={d} key={index}>{d}</MenuItem>
+
+                    ))}
+
                 </Select>
             </FormControl>
         </Box>

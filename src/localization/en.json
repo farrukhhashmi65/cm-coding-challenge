@@ -4,5 +4,11 @@
     "totalAbsences": "Total Absences",
     "startDate": "Start Date",
     "endDate": "End Date",
-    "absenceType": "Absence Type"
+    "absenceType": "Absence Type",
+    "memberNote": "Member:",
+    "admitterNote": "Admitter:",
+    "filter":"Filter",
+    "clear":"Clear",
+    "dateError": "End Date must be later to Start Date",
+    "addToCall":"Add to Calendar"
 }

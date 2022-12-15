@@ -49,11 +49,30 @@ membersRoutes.get('/members/:userId', (req, res) => {
 
 //get all absences
 membersRoutes.get('/absences', (req, res) => {
-    const absences = getAbsencesData()
-    if(absences){
-        res.status(200).send(absences)
+    const query = req.query
+    const { startDate, endDate, absenceType } = query;
+    const { payload } = getAbsencesData()
+    let absences = payload;
+    if (startDate && !endDate) {
+        absences = absences.filter(item => item.startDate >= startDate) || [];
+    } 
+    if (!startDate && endDate) {
+        absences = absences.filter(item => item.endDate <= endDate) || [];
+    } 
+
+    if (startDate && endDate) {
+        absences = absences.filter(item => item.startDate >= startDate && item.endDate <= endDate) || [];
+    } 
+    if (absenceType) {
+        absences = absences.filter(item => item.type === absenceType) || [];
     }
-    else{
+
+    absences.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+
+    if (absences) {
+        res.status(200).send({  message: "Success", payload: absences })
+    }
+    else {
         res.sendStatus(404);
     }
 })
@@ -88,29 +107,17 @@ membersRoutes.get('/members/absences/:memberId', (req, res) => {
 })
 
 //get absences types
-membersRoutes.get('/getAbsenceTypes', (req, res) => {
+membersRoutes.get('/getAbsencesData', (req, res) => {
     const absences = getAbsencesData()
     const { payload } = absences;
     const uniqueTypes = Array.from(new Set(payload.map(x => x.type)));
    
     if(uniqueTypes){
-        res.status(200).send(uniqueTypes)
+        res.status(200).send({ absencesTypes: uniqueTypes, totalAbsences : payload.length })
     }
     else{
         res.sendStatus(404);
     }  
-})
-
-
-//get total absences
-membersRoutes.get('/getTotalAbsences', (req, res) => {
-    const absences = getAbsencesData()
-    if(absences){
-        res.status(200).send({ total : absences.payload.length})
-    }
-    else{
-        res.sendStatus(404);
-    }
 })
 
 

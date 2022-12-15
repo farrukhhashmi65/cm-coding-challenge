@@ -20,11 +20,14 @@
     "@types/react-redux": "^7.1.24",
     "@types/redux-logger": "^3.0.9",
     "axios": "^1.2.1",
+    "cors": "^2.8.5",
+    "date-fns": "^2.29.3",
     "express": "^4.18.2",
     "i18next": "^22.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.1",
+    "react-icalendar-link": "^3.0.2",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "redux-logger": "^3.0.6",
@@ -55,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "eslint": "^8.29.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
@@ -74,5 +78,5 @@
     "*.ts": "npm run lint:fix"
   },
   "type": "module",
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8000"
 }
