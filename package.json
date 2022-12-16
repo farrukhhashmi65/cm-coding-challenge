@@ -77,5 +77,6 @@
   "lint-staged": {
     "*.ts": "npm run lint:fix"
   },
-  "type": "module"
+  "type": "module",
+  "proxy": "http://localhost:8000"
 }
