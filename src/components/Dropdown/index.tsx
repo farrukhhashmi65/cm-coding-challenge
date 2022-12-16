@@ -25,10 +25,11 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
         <Box sx={{ flexGrow: 1 }}>
             <FormControl fullWidth>
-                <InputLabel id="simple-select-label">{label}</InputLabel>
+                <InputLabel id="simple-select-label" data-testid="dropdownLabel">{label}</InputLabel>
                 <Select
                     labelId="simple-select-label"
                     id="simple-select"
+                    data-testid="selectInput"
                     value={value}
                     label={label}
                     onChange={handleChange}

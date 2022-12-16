@@ -7,7 +7,7 @@ const Paginate: React.FC<any> = ({ listDataPerPage, totalRecord, paginate }: any
 
   return (
      <Box sx={{ justifyContent: 'center', display: 'flex' }}>
-        <Pagination count={totalCount} color="primary" onChange={paginate} />
+        <Pagination data-testid="pagination" count={totalCount} color="primary" onChange={paginate} />
      </Box>
   )
 }
