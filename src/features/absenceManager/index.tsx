@@ -66,7 +66,7 @@ const AbsenceManager: React.FC<any> = (): JSX.Element => {
                     paginate={paginate}
                 />
                 {currentRecord !== null && currentRecord.length > 0 &&
-                <List sx={{ width: '100%', p: 2 }}>
+                <List sx={{ width: '100%' }}>
                     {currentRecord.map((item: any) => {
                       const startDate = new Date(item.startDate)
                       const endDate = new Date(item.endDate)
